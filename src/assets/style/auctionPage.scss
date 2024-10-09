@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 .App{
     height: 100vh;
     box-sizing: border-box;
@@ -15,6 +18,13 @@
     border-radius: 9px;
     text-align: center;
     margin:20px 0;
+    padding: 20px;
+    .PlayerCard-img{
+        height: 200px;
+        width: 250px;
+        display: inline-block;
+        border: 1px solid;
+    }
 }
 .AuctionButtons{
     display: flex;
@@ -22,11 +32,25 @@
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 20px;
     .buttons{
         text-align: center;
-        &:first-child{
-                width: 100%;
-        }
+        cursor: pointer;
+        padding: 4px 30px;
+        border: 1px solid;
+        line-height: 20px;
+        height:32px;
+        border-radius: 3px;
     }
 
 }    
+
+.AuctionTeam-Container{
+    display: flex;
+    gap:20px;
+    .AuctionTeam{
+        flex-grow: 1;
+        text-align: center;
+        border: 1px solid;
+    }
+}

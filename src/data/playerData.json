@@ -5,7 +5,11 @@
       "matches": 4,
       "runs": 224,
       "wickets": 2,
-      "lastTeam": "C Sharp Kings"
+      "lastTeam": "C Sharp Kings",
+      "playerType":"Marquee",
+      "playerAttributes":"All-Rounder",
+      "basePrice":2250,
+      "finalPrice": 2250 
     },
     {
       "id":2,
@@ -13,7 +17,11 @@
       "matches": 4,
       "runs": 80,
       "wickets": 5,
-      "lastTeam": "C Sharp Kings"
+      "lastTeam": "C Sharp Kings",
+      "playerType":"Marquee",
+      "playerAttributes":"All-Rounder",
+      "basePrice":400,
+      "finalPrice": 0 
     },
     {
       "id":3,
@@ -21,6 +29,10 @@
       "matches": 4,
       "runs": 95,
       "wickets": 3,
-      "lastTeam": "Angular Attackers"
+      "lastTeam": "Angular Attackers",
+      "playerType":"Marquee",
+      "playerAttributes":"All-Rounder",
+      "basePrice":100,
+      "finalPrice": 0
     }
   ]
