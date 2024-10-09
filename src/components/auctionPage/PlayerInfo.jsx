@@ -1,13 +1,14 @@
-function PlayerInfo(){
+
+function PlayerInfo({ player }){
     return(
             <>
             <div className="PlayerCard-img"></div>
-            <div className="PlayerCard-name">Saurabh Gupta</div>
+            <div className="PlayerCard-name">{player.name}</div>
             <div className="PlayerCard-info">
-                <div className="PlayerCardInfo-matches">4</div>
-                <div className="PlayerCardInfo-runs">224</div>
-                <div className="PlayerCardInfo-wickets">2</div>
-                <div className="PlayerCardInfo-lastTeam">C Sharp Kings</div>
+                <div className="PlayerCardInfo-matches">Matches: {player.matches}</div>
+                <div className="PlayerCardInfo-runs">Runs: {player.runs}</div>
+                <div className="PlayerCardInfo-wickets">Wickets: {player.wickets}</div>
+                <div className="PlayerCardInfo-lastTeam">Last Team: {player.lastTeam}</div>
             </div>
             </>
     )

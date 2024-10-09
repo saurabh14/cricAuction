@@ -1,10 +1,10 @@
 import PlayerInfo from "./PlayerInfo";
 
 
-function PlayerCard(){
+function PlayerCard({ player }){
     return(
         <div className="PlayerCard">
-            <PlayerInfo />
+            <PlayerInfo player={player}  />
         </div>
     )
 }
