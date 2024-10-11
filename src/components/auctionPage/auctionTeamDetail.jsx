@@ -8,7 +8,8 @@ function AuctionTeamDetail({ player, team }) {
             <div className="AuctionTeam-Players">{team.playerCount} Players</div>
             <div className="AuctionTeam-TotalSpend">Total Spend: {team.totalPrice}</div>
             <div className="AuctionTeam-Balance">Balance: {20000 - team.totalPrice}</div>
-            {player && <div className="CurrentPlayer">Current Player: {player.name}</div>} {/* Display the current player */}
+            <div className="AuctionTeam-RTMUsed">RTM Available: {2 - team.RTMCard }</div>
+            
         </>
     );
 }

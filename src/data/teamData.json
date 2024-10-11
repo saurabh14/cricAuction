@@ -3,25 +3,29 @@
       "id":1,
       "teamName": "C Sharp Kings",
       "playerCount":0,
-      "totalPrice": 0
+      "totalPrice": 0,
+      "RTMCard":0
     },
     {
         "id":2,
         "teamName": "Angular Attackers",
         "playerCount":0,
-        "totalPrice": 0
+        "totalPrice": 0,
+        "RTMCard":0
       },
       {
         "id":3,
         "teamName": "Flying Falcons",
         "playerCount":0,
-        "totalPrice": 0
+        "totalPrice": 0,
+        "RTMCard":0
       },
       {
         "id":4,
         "teamName": "React Rangers",
         "playerCount":0,
-        "totalPrice": 0
+        "totalPrice": 0,
+        "RTMCard":0
       }
     
   ]

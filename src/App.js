@@ -1,6 +1,7 @@
 import PlayerCard from "./components/auctionPage/PlayerCard";
 import AuctionTeam from './components/auctionPage/auctionTeam';
 import AuctionBidding from "./components/auctionPage/auctionBidding";
+import FullPlayers from "./components/auctionPage/fullPlayers";
 
 import playerData from "./data/playerData.json";
 import teamData from './data/teamData.json';
@@ -13,7 +14,7 @@ import "./assets/style/auctionPage.scss";
 function App() {
   const [searchId, setSearchId] = useState("");
   const filteredPlayer = playerData.find((player) => player.id === parseInt(searchId));
-  
+  const [players, setPlayers] = useState(playerData);
   const [teams, setTeams] = useState(teamData); // Team state
   const [isStarted, setIsStarted] = useState(false);
   const playerFound = !!filteredPlayer;
@@ -44,7 +45,8 @@ function App() {
               </div>
           ) : (
               <div className="playerCard-container">
-                  <p>No player found with this ID.</p>
+                  {/* <p>No player found with this ID.</p> */}
+                  <FullPlayers players={players} setPlayers={setPlayers} />
               </div>
           )}
 
