@@ -1,10 +1,13 @@
 function FullPlayers({players}){
     return (
-        <div>
+        <div className="playerListwrapper-card">
              {players.map((player) => (
-                <div key={player.id}>
-                    <span>{player.name}</span>
-                    <div className="RatingContainer"></div>
+                <div key={player.id} className="PlayerListCard">
+                    <div className="playerName">{player.name}</div>
+                    <div className="playerAttributes">{player.playerAttributes}</div>
+                    <div className={`RatingContainer star${player.stars}`} >
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
                 </div>
             ))}
         </div>

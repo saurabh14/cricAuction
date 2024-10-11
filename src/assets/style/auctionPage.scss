@@ -54,3 +54,51 @@
         border: 1px solid;
     }
 }
+
+.playerListwrapper-card{
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 400px;
+    overflow: auto;
+    gap: 10px;
+    .PlayerListCard{
+        display: flex;
+        border: 1px solid;
+        border-radius: 3px;
+        padding: 5px 20px;
+        gap: 3px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        .playerName{
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .RatingContainer > span::before {
+            content: "\2605";
+            color: #ddd;
+        }
+        
+        .RatingContainer.star1 span:nth-of-type(1)::before {
+            color: gold; 
+        }
+        
+        .RatingContainer.star2 span:nth-of-type(-n+2)::before {
+            color: gold;
+        }
+        
+        .RatingContainer.star3 span:nth-of-type(-n+3)::before {
+            color: gold;
+        }
+        
+        .RatingContainer.star4 span:nth-of-type(-n+4)::before {
+            color: gold;
+        }
+        
+        .RatingContainer.star5 span:nth-of-type(-n+5)::before {
+            color: gold;
+        }
+    }
+}
+
