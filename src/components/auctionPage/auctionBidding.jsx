@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function AuctionBidding({ playerFound, player, teams, setTeams }) {
+function AuctionBidding({ playerFound, player, teams, setTeams,setSearchId }) {
     const [isStarted, setIsStarted] = useState(false); // Auction started state
 
     const handleStart = () => {
@@ -19,20 +19,32 @@ function AuctionBidding({ playerFound, player, teams, setTeams }) {
             if (teamIndex !== -1) {
                 // Update team data
                 const updatedTeams = [...teams];
+
+                player.finalPrice = price;
+
                 updatedTeams[teamIndex].playerCount += 1; // Increment player count
                 updatedTeams[teamIndex].totalPrice += parseInt(price); // Add price to total
                 if (rtmUsed) {
                     updatedTeams[teamIndex].RTMCard += 1;
                 }
-                
+                updatedTeams[teamIndex].selectedPlayer.push(player.id);
+                console.log(player);
 
+                console.log(updatedTeams);
                 setTeams(updatedTeams); // Update state with new team data
                 setIsStarted(false); // Optionally reset the auction
+                setSearchId(''); 
+            
             } else {
                 alert("Invalid Team ID. Please try again.");
             }
         }
     };
+
+    const handleUnsold =() =>{
+        player.finalPrice = -1;
+        setSearchId(''); 
+    }
 
     return (
         <>
@@ -48,7 +60,7 @@ function AuctionBidding({ playerFound, player, teams, setTeams }) {
                         <div className="buttons" onClick={handleSold}>
                             Sold
                         </div>
-                        <div className="buttons">Unsold</div>
+                        <div className="buttons" onClick={handleUnsold}>Unsold</div>
                     </>
                 )}
             </div>

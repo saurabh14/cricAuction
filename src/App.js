@@ -7,7 +7,16 @@ import playerData from "./data/playerData.json";
 import teamData from './data/teamData.json';
 
 import { useState } from "react";
+
 import "./assets/style/auctionPage.scss"; 
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+
+
+
+        
+
+
+        
 
 
 
@@ -18,6 +27,7 @@ function App() {
   const [teams, setTeams] = useState(teamData); // Team state
   const [isStarted, setIsStarted] = useState(false);
   const playerFound = !!filteredPlayer;
+
 
   const handleSearch = (e) => {
       setSearchId(e.target.value); 
@@ -32,6 +42,7 @@ function App() {
           <div className="SearchPlayer-Container">
               <span>Player ID:</span>
               <input
+                  id="playerSearch"
                   type="text"
                   placeholder="Search by Player ID"
                   value={searchId}
@@ -58,10 +69,11 @@ function App() {
               onStart={handleStart} 
               teams={teams}
               setTeams={setTeams}
+              setSearchId={setSearchId} 
           />
 
           {/* Always display the AuctionTeam component with the relevant teams */}
-          <AuctionTeam player={filteredPlayer} teams={teams} />
+          <AuctionTeam player={players} teams={teams} />
       </div>
   );
 }

@@ -50,8 +50,23 @@
     gap:20px;
     .AuctionTeam{
         flex-grow: 1;
-        text-align: center;
         border: 1px solid;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        .AuctionTeam-Logo{
+            width:40%;
+            height:100%;
+            border: 1px solid;;
+        }
+       
+        .AuctionTeam-Details{
+            flex-grow:1;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding: 5px 10px;
+        }
     }
 }
 
@@ -100,5 +115,15 @@
             color: gold;
         }
     }
+}
+
+.fullSquad-playerlist{
+    display: flex;
+}
+
+.p-button.p-component{
+    padding:6px 30px;
+    height:32px;
+    font-size: 14px;
 }
 
