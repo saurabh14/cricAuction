@@ -21,19 +21,26 @@ function AuctionBidding({ playerFound, player, teams, setTeams,setSearchId }) {
                 const updatedTeams = [...teams];
 
                 player.finalPrice = price;
-
-                updatedTeams[teamIndex].playerCount += 1; // Increment player count
-                updatedTeams[teamIndex].totalPrice += parseInt(price); // Add price to total
-                if (rtmUsed) {
-                    updatedTeams[teamIndex].RTMCard += 1;
+                const currentAvailable = 20000 - updatedTeams[teamIndex].totalPrice ;
+                if(parseInt(currentAvailable) - parseInt(price) > 0){
+                    if (rtmUsed) {
+                        updatedTeams[teamIndex].RTMCard += 1;
+                    }
+                    updatedTeams[teamIndex].playerCount += 1; // Increment player count
+                    updatedTeams[teamIndex].totalPrice += parseInt(price); 
+                    updatedTeams[teamIndex].selectedPlayer.push(player.id);
+                    setTeams(updatedTeams); // Update state with new team data                
                 }
-                updatedTeams[teamIndex].selectedPlayer.push(player.id);
-                console.log(player);
-
-                console.log(updatedTeams);
-                setTeams(updatedTeams); // Update state with new team data
+                else{
+                    alert("Exceeds total Purse");
+                }
+            
+                
+               
+                //Reset Randomizer
                 setIsStarted(false); // Optionally reset the auction
                 setSearchId(''); 
+                
             
             } else {
                 alert("Invalid Team ID. Please try again.");

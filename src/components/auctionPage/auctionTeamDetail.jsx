@@ -19,7 +19,7 @@ function AuctionTeamDetail({ player, team }) {
                 <Dialog header={team.teamName} visible={visible} style={{ width: '50vw' }} onHide={() => {if (!visible) return; setVisible(false); }}>
                     
                     
-                    <div className="fullSquad-List">
+                    <div className="fullSquad-List browserScrollStyle">
                     {
                         (team.selectedPlayer.length === 0) ? (
                             <div className='NoPlayerSelected'>No Players bought yet</div>                           
@@ -35,6 +35,25 @@ function AuctionTeamDetail({ player, team }) {
                                 ))                           
                         )}
 
+                    </div>
+
+                    <div className="fullSquad-teamInfo">
+                    <div className='fullSquad-infowrapper'>
+                            <div className='fullSquad-title'>Player Bought:</div>
+                            <div className='fullSquad-details'>{team.playerCount}</div>
+                        </div>
+                        <div className='fullSquad-infowrapper'>
+                            <div className='fullSquad-title'>Total Money Spend:</div>
+                            <div className='fullSquad-details'>{team.totalPrice}</div>
+                        </div>
+                        <div className='fullSquad-infowrapper'>
+                            <div className='fullSquad-title'>Total Money Remaining:</div>
+                            <div className='fullSquad-details'>{20000 - team.totalPrice}</div>
+                        </div>
+                        <div className='fullSquad-infowrapper'>
+                            <div className='fullSquad-title'>RTM Available:</div>
+                            <div className='fullSquad-details'>{2 - team.RTMCard }</div>
+                        </div>                     
                     </div>
                 </Dialog>
 

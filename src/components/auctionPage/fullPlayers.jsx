@@ -7,7 +7,7 @@ function FullPlayers({players}){
     const [visible, setVisible] = useState(false);
     return (
         <>
-        <div className="playerListwrapper-card">
+        <div className="playerListwrapper-card browserScrollStyle">
              {players.filter(player => player.finalPrice === 0).map((player) => (
                 <div key={player.id} className="PlayerListCard">
                     <div className="playerName">{player.name}</div>
@@ -20,9 +20,9 @@ function FullPlayers({players}){
         </div>
         
 
-        <Button label="Unsold Players" icon="pi pi-external-link" onClick={() => setVisible(true)} />
+        <Button label="Unsold Players" className='unsoldBtn' icon="pi pi-external-link" onClick={() => setVisible(true)} />
         <Dialog header="Unsold Players" visible={visible} style={{ width: '50vw' }} onHide={() => {if (!visible) return; setVisible(false); }}>                  
-                    <div className="fullSquad-List">
+                    <div className="fullSquad-List browserScrollStyle">
                     {
                         (players.filter(player => player.finalPrice === -1).length === 0) ? (
                             <div className='NoPlayerSelected'>No Players Unsold</div>                           

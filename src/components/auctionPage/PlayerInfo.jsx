@@ -3,6 +3,7 @@ function PlayerInfo({ player }){
     return(
             <>
             <div className="PlayerCard-img"></div>
+            <div className="PlayerCard-id">{player.id}</div>
             <div className="PlayerCard-name">{player.name}</div>
             <div className="PlayerCard-info">
                 <div className="PlayerCardInfo-matches">Matches: {player.matches}</div>

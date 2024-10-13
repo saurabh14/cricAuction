@@ -7,6 +7,7 @@ import playerData from "./data/playerData.json";
 import teamData from './data/teamData.json';
 
 import { useState } from "react";
+import { Button } from 'primereact/button';
 
 import "./assets/style/auctionPage.scss"; 
 import "primereact/resources/themes/lara-light-cyan/theme.css";
@@ -28,26 +29,19 @@ function App() {
   const [isStarted, setIsStarted] = useState(false);
   const playerFound = !!filteredPlayer;
 
-
-  const handleSearch = (e) => {
-      setSearchId(e.target.value); 
-  };
-
   const handleStart = () => {
       setIsStarted(true);
+  };
+
+  const randomizePlayerId = () => {
+    const randomId = Math.floor(Math.random() * 80); 
+    setSearchId(randomId);
   };
 
   return (
       <div className="App">
           <div className="SearchPlayer-Container">
-              <span>Player ID:</span>
-              <input
-                  id="playerSearch"
-                  type="text"
-                  placeholder="Search by Player ID"
-                  value={searchId}
-                  onChange={handleSearch}
-              />
+              <Button label="Select Player to Auction" className='RandomPlayer' icon="pi pi-external-link" onClick={() => randomizePlayerId()} />
           </div>
 
           {filteredPlayer ? (
@@ -55,8 +49,7 @@ function App() {
                   <PlayerCard player={filteredPlayer} />
               </div>
           ) : (
-              <div className="playerCard-container">
-                  {/* <p>No player found with this ID.</p> */}
+              <div className="playerCard-container ">
                   <FullPlayers players={players} setPlayers={setPlayers} />
               </div>
           )}
