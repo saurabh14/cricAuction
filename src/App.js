@@ -28,6 +28,11 @@ function App() {
   const [teams, setTeams] = useState(teamData); // Team state
   const [isStarted, setIsStarted] = useState(false);
   const playerFound = !!filteredPlayer;
+  
+  // Interactive button states
+  const [selectedTeam, setSelectedTeam] = useState(null);
+  const [currentBid, setCurrentBid] = useState(null);
+  const [rtmUsed, setRtmUsed] = useState(false);
 
   const handleStart = () => {
       setIsStarted(true);
@@ -36,11 +41,33 @@ function App() {
   const randomizePlayerId = () => {
     const randomId = Math.floor(Math.random() * 80); 
     setSearchId(randomId);
+    resetInteractiveStates();
   };
 
   const handleMarqueePlayerSelect = (player) => {
     // Set the selected Marquee player for auction
     setSearchId(player.id);
+    resetInteractiveStates();
+  };
+
+  // Interactive button handlers
+  const handleTeamSelect = (teamId) => {
+    setSelectedTeam(teamId);
+  };
+
+  const handleRTMSelect = (used) => {
+    setRtmUsed(used);
+  };
+
+  const handlePriceSelect = (price) => {
+    setCurrentBid(price);
+  };
+
+  // Reset interactive states when player changes
+  const resetInteractiveStates = () => {
+    setSelectedTeam(null);
+    setCurrentBid(null);
+    setRtmUsed(false);
   };
 
   return (
@@ -67,7 +94,16 @@ function App() {
 
                   {filteredPlayer ? (
                       <div className="playerCard-container">
-                          <PlayerCard player={filteredPlayer} />
+                          <PlayerCard 
+                              player={filteredPlayer} 
+                              teams={teams}
+                              onTeamSelect={handleTeamSelect}
+                              onRTMSelect={handleRTMSelect}
+                              onPriceSelect={handlePriceSelect}
+                              currentBid={currentBid}
+                              selectedTeam={selectedTeam}
+                              rtmUsed={rtmUsed}
+                          />
                       </div>
                   ) : (
                       <div className="playerCard-container">
