@@ -4,7 +4,10 @@ function PlayerCard({ player }){
     return(
         <div className="PlayerCard">
             <div className="player-number">PLAYER NO. {player.id}</div>
-            <PlayerInfo player={player} />
+            <div className="player-wrapper">
+                <PlayerInfo player={player} />
+            </div>
+           
         </div>
     )
 }

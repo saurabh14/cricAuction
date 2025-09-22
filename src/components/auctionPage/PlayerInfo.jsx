@@ -9,26 +9,28 @@ function PlayerInfo({ player }){
     
     return(
         <>
-            <div className="PlayerCard-img"></div>
-            
-            <div className="player-name-panel">
-                <div className="PlayerCard-name">{player.name}</div>
-            </div>
-            
-            <div className="player-role-panel">
-                <div className="PlayerCard-role">{player.playerAttributes}</div>
-                <div className="PlayerCard-hand">
-                    {player.playerAttributes === 'Batsman' ? '(Right Hand Batsman)' : 
-                     player.playerAttributes === 'Bowler' ? '(Right Arm Bowler)' : 
-                     '(Right Hand Allrounder)'}
+        <div className="PlayerCard-details-wrapper">      
+                <div className="PlayerCard-img"></div>
+                
+                <div className="player-name-panel">
+                    <div className="PlayerCard-name">{player.name}</div>
                 </div>
-            </div>
-            
-            <div className="base-price-panel">
-                <div className="price-label">Base Price</div>
-                <div className="price-value">Rs. {player.basePrice}</div>
-            </div>
-            
+                
+                <div className="player-role-panel">
+                    <div className="PlayerCard-role">{player.playerAttributes}</div>
+                    <div className="PlayerCard-hand">
+                        {player.playerAttributes === 'Batsman' ? '(Right Hand Batsman)' : 
+                        player.playerAttributes === 'Bowler' ? '(Right Arm Bowler)' : 
+                        '(Right Hand Allrounder)'}
+                    </div>
+                </div>
+                
+                <div className="base-price-panel">
+                    <div className="price-label">Base Price</div>
+                    <div className="price-value">Rs. {player.basePrice}</div>
+                </div>
+        </div>
+        <div className="PlayerCard-info-wrapper">
             <div className="PlayerCard-info">
                 <div className="stat-item">
                     <div className="stat-label">Matches</div>
@@ -55,6 +57,9 @@ function PlayerInfo({ player }){
                     <div className="stat-value">{player.wickets}</div>
                 </div>
             </div>
+        </div>
+            
+
         </>
     )
 }

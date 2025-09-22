@@ -204,7 +204,7 @@ body {
         height: 180px;
         background: linear-gradient(135deg, #f8f9fa, #e9ecef);
         border-radius: 15px;
-        margin-bottom: 15px;
+        margin:0 auto;
         position: relative;
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -224,7 +224,6 @@ body {
         background: rgba(0, 0, 0, 0.7);
         padding: 15px 30px;
         border-radius: 25px;
-        margin-bottom: 10px;
         border: 2px solid #00d4aa;
         
         .PlayerCard-name {
@@ -241,7 +240,6 @@ body {
         background: rgba(0, 0, 0, 0.7);
         padding: 10px 25px;
         border-radius: 20px;
-        margin-bottom: 20px;
         border: 1px solid #0099cc;
         
         .PlayerCard-role {
@@ -255,7 +253,6 @@ body {
         .PlayerCard-hand {
             font-size: 0.9rem;
             color: #cccccc;
-            margin-top: 5px;
         }
     }
 }
@@ -266,7 +263,6 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     width: 100%;
-    margin-top: 20px;
     
     .stat-item {
         background: rgba(0, 0, 0, 0.6);
@@ -296,7 +292,7 @@ body {
     padding: 20px;
     border-radius: 15px;
     text-align: center;
-    margin: 20px 0;
+    margin: 0;
     box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3);
     
     .price-label {
@@ -1021,4 +1017,20 @@ body {
 
 .unsoldBtn{
     padding: 10px 20px;
+}
+
+.player-wrapper{
+    display: flex;
+    width: 70%;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+    .PlayerCard-details-wrapper{
+        display: flex ;
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+
 }
