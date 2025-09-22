@@ -716,6 +716,10 @@ body {
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            padding: 25px 30px;
+        }
+        .p-dialog-header-icons{
+            padding: 21px 10px;
         }
     }
     
@@ -723,6 +727,7 @@ body {
         background: rgba(0, 0, 0, 0.9);
         color: #ffffff;
         border-radius: 0 0 10px 10px;
+        padding: 20px;
     }
 }
 
@@ -1205,3 +1210,4 @@ body {
 
 
 }
+
