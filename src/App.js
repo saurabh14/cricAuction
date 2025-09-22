@@ -40,7 +40,9 @@ function App() {
 
   return (
       <div className="App">
-          <div className="SearchPlayer-Container">
+        <div className="Auction-Container">
+        <div className="Auction-Left">
+        <div className="SearchPlayer-Container">
               <Button label="Select Player to Auction" className='RandomPlayer' icon="pi pi-external-link" onClick={() => randomizePlayerId()} />
           </div>
 
@@ -65,8 +67,17 @@ function App() {
               setSearchId={setSearchId} 
           />
 
-          {/* Always display the AuctionTeam component with the relevant teams */}
+        </div>
+        <div className="Auction-Right">
+             {/* Always display the AuctionTeam component with the relevant teams */}
           <AuctionTeam player={players} teams={teams} />
+
+        </div>
+        </div>
+
+         
+
+         
       </div>
   );
 }

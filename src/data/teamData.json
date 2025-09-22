@@ -5,7 +5,8 @@
       "playerCount":0,
       "totalPrice": 0,
       "RTMCard":0,
-      "selectedPlayer":[]
+      "selectedPlayer":[],
+      "class":"CSK"
     },
     {
         "id":2,
@@ -13,7 +14,8 @@
         "playerCount":0,
         "totalPrice": 0,
         "RTMCard":0,
-        "selectedPlayer":[]
+        "selectedPlayer":[],
+        "class":"AA"
       },
       {
         "id":3,
@@ -21,7 +23,8 @@
         "playerCount":0,
         "totalPrice": 0,
         "RTMCard":0,
-        "selectedPlayer":[]
+        "selectedPlayer":[],
+        "class":"FF"
       },
       {
         "id":4,
@@ -29,7 +32,8 @@
         "playerCount":0,
         "totalPrice": 0,
         "RTMCard":0,
-        "selectedPlayer":[]
+        "selectedPlayer":[],
+        "class":"RR"
       }
     
   ]

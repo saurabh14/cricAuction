@@ -6,7 +6,7 @@ function AuctionTeamDetail({ player, team }) {
     const [visible, setVisible] = useState(false);
     return (
         <>
-        <div className="AuctionTeam-Logo">{team.logo ? <img src={team.logo} alt={`${team.teamName} logo`} /> : "No Logo"}</div>
+        <div className="AuctionTeam-Logo"></div>
         <div className="AuctionTeam-Details">
             <div className="AuctionTeam-Name">{team.teamName}</div>
                 <div className="AuctionTeam-Players">{team.playerCount} Players</div>

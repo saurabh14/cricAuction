@@ -5,6 +5,18 @@
     height: 100vh;
     box-sizing: border-box;
     padding: 20px 40px;
+    .Auction-Container{
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        gap: 20px;
+        .Auction-Left{
+            width:70%;
+        }
+        .Auction-Right{
+            flex-grow: 1;
+        }
+    }
 }
 .SearchPlayer-Container{
     display: flex;
@@ -55,6 +67,8 @@
 .AuctionTeam-Container{
     display: flex;
     gap:20px;
+    flex-direction: column;
+    height: 100%;
     .AuctionTeam{
         flex-grow: 1;
         display: flex;
@@ -75,13 +89,45 @@
             gap: 3px;
             padding: 0px 10px;
         }
+        &.AA{
+            .AuctionTeam-Logo{
+                background-image: url('../Img/AA.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+        &.CSK{
+            .AuctionTeam-Logo{
+                background-image: url('../Img/CSK.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+        &.FF{
+            .AuctionTeam-Logo{
+                background-image: url('../Img/FF.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+        &.RR{
+            .AuctionTeam-Logo{
+                background-image: url('../Img/RR.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
     }
 }
 
 .playerListwrapper-card{
     display: flex;
     flex-wrap: wrap;
-    max-height: 330px;
+    max-height: calc(100vh - 300px);
     overflow: auto;
     gap: 10px;
     padding: 5px;
