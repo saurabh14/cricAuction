@@ -1,10 +1,10 @@
 import PlayerInfo from "./PlayerInfo";
 
-
 function PlayerCard({ player }){
     return(
         <div className="PlayerCard">
-            <PlayerInfo player={player}  />
+            <div className="player-number">PLAYER NO. {player.id}</div>
+            <PlayerInfo player={player} />
         </div>
     )
 }

@@ -38,46 +38,64 @@ function App() {
     setSearchId(randomId);
   };
 
+  const handleMarqueePlayerSelect = (player) => {
+    // Set the selected Marquee player for auction
+    setSearchId(player.id);
+  };
+
   return (
       <div className="App">
-        <div className="Auction-Container">
-        <div className="Auction-Left">
-        <div className="SearchPlayer-Container">
-              <Button label="Select Player to Auction" className='RandomPlayer' icon="pi pi-external-link" onClick={() => randomizePlayerId()} />
+          {/* Professional Header */}
+          <div className="auction-header">
+              <div className={`back-button ${filteredPlayer ? 'visible' : 'hidden'}`} onClick={() => setSearchId('')}>
+                  <div className="back-arrow">←</div>
+              </div>
+              <div className="auction-title">
+                  <h1>Village Cricket League</h1>
+                  <div className="season-info">Season 10</div>
+              </div>
+              <div className="league-logo">
+              </div>
           </div>
 
-          {filteredPlayer ? (
-              <div className="playerCard-container">
-                  <PlayerCard player={filteredPlayer} />
+          {/* Main Auction Container */}
+          <div className="auction-container">
+              <div className="auction-left">
+                  <div className="SearchPlayer-Container">
+                      <Button label="Select Player to Auction" className='RandomPlayer' icon="pi pi-external-link" onClick={() => randomizePlayerId()} />
+                  </div>
+
+                  {filteredPlayer ? (
+                      <div className="playerCard-container">
+                          <PlayerCard player={filteredPlayer} />
+                      </div>
+                  ) : (
+                      <div className="playerCard-container">
+                          <FullPlayers 
+                              players={players} 
+                              setPlayers={setPlayers} 
+                              onMarqueePlayerSelect={handleMarqueePlayerSelect}
+                          />
+                      </div>
+                  )}
+
+                  {/* Auction Controls */}
+                  <AuctionBidding 
+                      isStarted={isStarted} 
+                      playerFound={playerFound} 
+                      player={filteredPlayer} 
+                      onStart={handleStart} 
+                      teams={teams}
+                      setTeams={setTeams}
+                      setSearchId={setSearchId} 
+                  />
               </div>
-          ) : (
-              <div className="playerCard-container ">
-                  <FullPlayers players={players} setPlayers={setPlayers} />
+
+              {/* Team Dashboard */}
+              <div className="auction-right">
+                  <AuctionTeam player={players} teams={teams} />
               </div>
-          )}
-
-          {/* Pass the teams and setTeams function to AuctionBidding */}
-          <AuctionBidding 
-              isStarted={isStarted} 
-              playerFound={playerFound} 
-              player={filteredPlayer} 
-              onStart={handleStart} 
-              teams={teams}
-              setTeams={setTeams}
-              setSearchId={setSearchId} 
-          />
-
-        </div>
-        <div className="Auction-Right">
-             {/* Always display the AuctionTeam component with the relevant teams */}
-          <AuctionTeam player={players} teams={teams} />
-
-        </div>
-        </div>
-
-         
-
-         
+          </div>
       </div>
   );
 }
