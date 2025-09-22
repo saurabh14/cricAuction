@@ -200,11 +200,10 @@ body {
     }
     
     .PlayerCard-img {
-        width: 150px;
-        height: 180px;
+        width: 250px;
+        height: 300px;
         background: linear-gradient(135deg, #f8f9fa, #e9ecef);
         border-radius: 15px;
-        margin:0 auto;
         position: relative;
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -280,6 +279,7 @@ body {
     // Team Selection Buttons
     .team-selection-section {
         border-right: 1px solid rgba(255, 255, 255, 0.1);
+        padding-right: 20px;
         
         .team-buttons {
             display: grid;
@@ -362,6 +362,7 @@ body {
     .rtm-selection-section {
         border-right: 1px solid rgba(255, 255, 255, 0.1);
         text-align: center;
+        padding-right: 20px;
         
         .rtm-button {
             padding: 15px 30px;
@@ -458,7 +459,7 @@ body {
 // Base Price Panel
 .base-price-panel {
     background: linear-gradient(135deg, #00d4aa, #0099cc);
-    padding: 20px;
+    padding: 10px 20px;
     border-radius: 15px;
     text-align: center;
     margin: 0;
@@ -1190,10 +1191,11 @@ body {
 
 .player-wrapper{
     display: flex;
-    width: 70%;
+    width: 100%;
     align-items: center;
     align-content: center;
     justify-content: space-evenly;
+    padding: 30px;
     .PlayerCard-details-wrapper{
         display: flex ;
         flex-direction: column;

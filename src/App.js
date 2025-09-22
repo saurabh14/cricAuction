@@ -26,7 +26,6 @@ function App() {
   const filteredPlayer = playerData.find((player) => player.id === parseInt(searchId));
   const [players, setPlayers] = useState(playerData);
   const [teams, setTeams] = useState(teamData); // Team state
-  const [isStarted, setIsStarted] = useState(false);
   const playerFound = !!filteredPlayer;
   
   // Interactive button states
@@ -34,9 +33,6 @@ function App() {
   const [currentBid, setCurrentBid] = useState(null);
   const [rtmUsed, setRtmUsed] = useState(false);
 
-  const handleStart = () => {
-      setIsStarted(true);
-  };
 
   const randomizePlayerId = () => {
     const randomId = Math.floor(Math.random() * 80); 
@@ -88,9 +84,11 @@ function App() {
           {/* Main Auction Container */}
           <div className="auction-container">
               <div className="auction-left">
-                  <div className="SearchPlayer-Container">
-                      <Button label="Select Player to Auction" className='RandomPlayer' icon="pi pi-external-link" onClick={() => randomizePlayerId()} />
-                  </div>
+                  {!filteredPlayer && (
+                      <div className="SearchPlayer-Container">
+                          <Button label="Select Player to Auction" className='RandomPlayer' icon="pi pi-external-link" onClick={() => randomizePlayerId()} />
+                      </div>
+                  )}
 
                   {filteredPlayer ? (
                       <div className="playerCard-container">
@@ -117,13 +115,14 @@ function App() {
 
                   {/* Auction Controls */}
                   <AuctionBidding 
-                      isStarted={isStarted} 
                       playerFound={playerFound} 
                       player={filteredPlayer} 
-                      onStart={handleStart} 
                       teams={teams}
                       setTeams={setTeams}
-                      setSearchId={setSearchId} 
+                      setSearchId={setSearchId}
+                      selectedTeam={selectedTeam}
+                      currentBid={currentBid}
+                      rtmUsed={rtmUsed}
                   />
               </div>
 

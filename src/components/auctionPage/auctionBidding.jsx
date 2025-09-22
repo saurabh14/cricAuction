@@ -1,68 +1,58 @@
-import { useState } from "react";
-
-function AuctionBidding({ playerFound, player, teams, setTeams,setSearchId }) {
-    const [isStarted, setIsStarted] = useState(false); // Auction started state
-
-    const handleStart = () => {
-        setIsStarted(true);
-    };
+function AuctionBidding({ playerFound, player, teams, setTeams, setSearchId, selectedTeam, currentBid, rtmUsed }) {
 
     const handleSold = () => {
-        const name = player.name; 
-        const price = prompt("Enter the sold price:"); 
-        const teamId = prompt("Enter team ID to assign player:");
-        const rtmUsed = window.confirm("Has RTM been used?");
+        // Check if all required selections are made
+        if (!selectedTeam) {
+            alert("Please select a team first!");
+            return;
+        }
+        
+        if (!currentBid) {
+            alert("Please select a bid price first!");
+            return;
+        }
 
-        if (name && price && teamId) {
-            const teamIndex = teams.findIndex((team) => team.id === parseInt(teamId));
+        const teamIndex = teams.findIndex((team) => team.id === selectedTeam);
 
-            if (teamIndex !== -1) {
-                // Update team data
-                const updatedTeams = [...teams];
+        if (teamIndex !== -1) {
+            // Update team data
+            const updatedTeams = [...teams];
 
-                player.finalPrice = price;
-                const currentAvailable = 20000 - updatedTeams[teamIndex].totalPrice ;
-                if(parseInt(currentAvailable) - parseInt(price) > 0){
-                    if (rtmUsed) {
-                        updatedTeams[teamIndex].RTMCard += 1;
-                    }
-                    updatedTeams[teamIndex].playerCount += 1; // Increment player count
-                    updatedTeams[teamIndex].totalPrice += parseInt(price); 
-                    updatedTeams[teamIndex].selectedPlayer.push(player.id);
-                    setTeams(updatedTeams); // Update state with new team data                
-                }
-                else{
-                    alert("Exceeds total Purse");
-                }
+            player.finalPrice = currentBid;
+            const currentAvailable = 20000 - updatedTeams[teamIndex].totalPrice;
             
+            if (parseInt(currentAvailable) - parseInt(currentBid) >= 0) {
+                if (rtmUsed) {
+                    updatedTeams[teamIndex].RTMCard += 1;
+                }
+                updatedTeams[teamIndex].playerCount += 1; // Increment player count
+                updatedTeams[teamIndex].totalPrice += parseInt(currentBid); 
+                updatedTeams[teamIndex].selectedPlayer.push(player.id);
+                setTeams(updatedTeams); // Update state with new team data
                 
-               
-                //Reset Randomizer
-                setIsStarted(false); // Optionally reset the auction
+                // Show success message
+                alert(`Player ${player.name} sold to ${updatedTeams[teamIndex].teamName} for Rs. ${currentBid}${rtmUsed ? ' (RTM Used)' : ''}`);
+                
+                // Reset Randomizer
                 setSearchId(''); 
-                
-            
             } else {
-                alert("Invalid Team ID. Please try again.");
+                alert("Exceeds total purse! Available: Rs. " + currentAvailable);
             }
+        } else {
+            alert("Invalid Team selection. Please try again.");
         }
     };
 
     const handleUnsold =() =>{
         player.finalPrice = -1;
+        alert(`Player ${player.name} went unsold`);
         setSearchId(''); 
     }
 
     return (
         <>
             <div className="AuctionButtons">
-                {!isStarted && playerFound && (
-                    <div className="buttons" onClick={handleStart}>
-                        Start
-                    </div>
-                )}
-
-                {isStarted && (
+                {playerFound && (
                     <>
                         <div className="buttons" onClick={handleSold}>
                             Sold

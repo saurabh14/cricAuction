@@ -9,9 +9,7 @@ function PlayerInfo({ player }){
     
     return(
         <>
-        <div className="PlayerCard-details-wrapper">      
-                <div className="PlayerCard-img"></div>
-                
+        <div className="PlayerCard-details-wrapper">                                  
                 <div className="player-name-panel">
                     <div className="PlayerCard-name">{player.name}</div>
                 </div>
@@ -26,10 +24,10 @@ function PlayerInfo({ player }){
                 </div>
                 
                 <div className="base-price-panel">
-                    <div className="price-label">Base Price</div>
                     <div className="price-value">Rs. {player.basePrice}</div>
                 </div>
         </div>
+        <div className="PlayerCard-img"></div>
         <div className="PlayerCard-info-wrapper">
             <div className="PlayerCard-info">
                 <div className="stat-item">
