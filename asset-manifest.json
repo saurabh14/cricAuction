@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/cricAuction/static/css/main.944e6f2d.css",
+    "main.js": "/cricAuction/static/js/main.360f4263.js",
+    "static/js/453.e2920542.chunk.js": "/cricAuction/static/js/453.e2920542.chunk.js",
+    "static/media/InterVariable-Italic.woff2": "/cricAuction/static/media/InterVariable-Italic.e295f70fe3e2df296c7b.woff2",
+    "static/media/InterVariable.woff2": "/cricAuction/static/media/InterVariable.a0e477f2f1f9d2376fde.woff2",
+    "static/media/FF.png": "/cricAuction/static/media/FF.37379644a942e5eecc09.png",
+    "static/media/AA.png": "/cricAuction/static/media/AA.b50cbb2009d1dbfe129a.png",
+    "static/media/CSK.png": "/cricAuction/static/media/CSK.67c1f40c515d748dc18d.png",
+    "static/media/RR.png": "/cricAuction/static/media/RR.ec979eb7552942822c08.png",
+    "static/media/VCL.png": "/cricAuction/static/media/VCL.09911202a56a443e57cb.png",
+    "index.html": "/cricAuction/index.html",
+    "main.944e6f2d.css.map": "/cricAuction/static/css/main.944e6f2d.css.map",
+    "main.360f4263.js.map": "/cricAuction/static/js/main.360f4263.js.map",
+    "453.e2920542.chunk.js.map": "/cricAuction/static/js/453.e2920542.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.944e6f2d.css",
+    "static/js/main.360f4263.js"
+  ]
+}
