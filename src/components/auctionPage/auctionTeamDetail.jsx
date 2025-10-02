@@ -28,7 +28,13 @@ function AuctionTeamDetail({ player, team }) {
 
                 {/* Full Squad */}
                 <Button label="Full Squad" icon="pi pi-external-link" onClick={() => setVisible(true)} />
-                <Dialog header={team.teamName} visible={visible} style={{ width: '50vw' }} onHide={() => {if (!visible) return; setVisible(false); }}>
+                <Dialog 
+                    header={team.teamName} 
+                    visible={visible} 
+                    style={{ width: '80vw' }} 
+                    onHide={() => {if (!visible) return; setVisible(false); }}
+                    className={team.class}
+                >
                     
                     
                     <div className="fullSquad-List browserScrollStyle">
