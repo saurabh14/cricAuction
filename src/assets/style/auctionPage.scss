@@ -494,7 +494,7 @@ body {
     
     .stat-item {
         background: rgba(0, 0, 0, 0.6);
-        padding: 15px;
+        padding: 10px 15px;
         border-radius: 10px;
         border-left: 4px solid #00d4aa;
         
@@ -927,13 +927,111 @@ body {
     }
 }
 
+// Playing XI List Styling
+.playing-xi-list {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px;
+    
+    .players-container {
+        .playing-xi-player {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            
+            &:hover {
+                background: rgba(255, 255, 255, 0.05);
+            }
+            
+            &:last-child {
+                border-bottom: none;
+            }
+            
+            .player-number {
+                width: 35px;
+                height: 35px;
+                background: rgba(255, 20, 147, 0.2);
+                border: 1px solid rgba(255, 20, 147, 0.4);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1rem;
+                font-weight: 700;
+                color: #ff1493;
+                margin-right: 15px;
+                text-shadow: 0 0 8px rgba(255, 20, 147, 0.5);
+            }
+            
+            .player-info {
+                flex-grow: 1;
+                
+                .player-name {
+                    font-size: 1rem;
+                    font-weight: 700;
+                    color: #ffffff;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    margin-bottom: 3px;
+                    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+                    
+                    .marquee-badge {
+                        color: #ffd700;
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+                }
+                
+                .player-price {
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    color: #00bfff;
+                    text-shadow: 0 0 8px rgba(0, 191, 255, 0.4);
+                }
+            }
+            
+            .player-icon {
+                font-size: 1.3rem;
+                filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+            }
+        }
+        
+        .no-players {
+            text-align: center;
+            padding: 40px 20px;
+            
+            .no-players-icon {
+                font-size: 3rem;
+                margin-bottom: 15px;
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+            }
+            
+            .no-players-text {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: #ffffff;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            }
+        }
+    }
+}
+
 // Team Info Panel - Single Row Card
 .fullSquad-teamInfo {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 15px;
-    margin-top: 20px;
+    margin: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1424,7 +1522,7 @@ body {
     align-items: center;
     align-content: center;
     justify-content: space-evenly;
-    padding: 30px;
+    padding: 10px 30px 0;
     .PlayerCard-details-wrapper{
         display: flex ;
         flex-direction: column;

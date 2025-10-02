@@ -31,28 +31,42 @@ function AuctionTeamDetail({ player, team }) {
                 <Dialog 
                     header={team.teamName} 
                     visible={visible} 
-                    style={{ width: '80vw' }} 
+                    style={{ width: '60vw' }} 
                     onHide={() => {if (!visible) return; setVisible(false); }}
                     className={team.class}
                 >
                     
                     
-                    <div className="fullSquad-List browserScrollStyle">
-                    {
-                        (team.selectedPlayer.length === 0) ? (
-                            <div className='NoPlayerSelected'>No Players bought yet</div>                           
-                        ) : (                           
+                    <div className="playing-xi-list">
+                        <div className="players-container">
+                            {team.selectedPlayer.length === 0 ? (
+                                <div className="no-players">
+                                    <div className="no-players-icon">🏏</div>
+                                    <div className="no-players-text">NO PLAYERS SELECTED YET</div>
+                                </div>
+                            ) : (
                                 player.filter(p => team.selectedPlayer.includes(p.id))
-                                .map(selectedPlayer => (
-                                    <div className="fullSquad-playerlist" key={selectedPlayer.id}>
-                                        <div>{selectedPlayer.name}</div>
-                                        <div>{selectedPlayer.playerAttributes}</div>
-                                        <div>{selectedPlayer.finalPrice}</div>
-                                        
+                                .map((selectedPlayer, index) => (
+                                    <div className="playing-xi-player" key={selectedPlayer.id}>
+                                        <div className="player-number">{index + 1}</div>
+                                        <div className="player-info">
+                                            <div className="player-name">
+                                                {selectedPlayer.name}
+                                                {(selectedPlayer.playerType === 'Marquee 1' || selectedPlayer.playerType === 'Marquee 2' || selectedPlayer.playerType === 'Marquee Legend') && 
+                                                    <span className="marquee-badge"> ({selectedPlayer.playerType})</span>
+                                                }
+                                            </div>
+                                            <div className="player-price">₹{selectedPlayer.finalPrice}</div>
+                                        </div>
+                                        <div className="player-icon">
+                                            {selectedPlayer.playerAttributes.toLowerCase().includes('wicket') || selectedPlayer.playerAttributes.toLowerCase().includes('wk') ? 'WK' : 
+                                             selectedPlayer.playerAttributes.toLowerCase().includes('bowl') || selectedPlayer.playerAttributes.toLowerCase().includes('bowler') ? 'BOWL' : 
+                                             selectedPlayer.playerAttributes.toLowerCase().includes('allrounder') ? 'AR' : 'BAT'}
+                                        </div>
                                     </div>
-                                ))                           
-                        )}
-
+                                ))
+                            )}
+                        </div>
                     </div>
 
                     <div className="fullSquad-teamInfo">
