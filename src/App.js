@@ -6,7 +6,7 @@ import FullPlayers from "./components/auctionPage/fullPlayers";
 import playerData from "./data/playerData.json";
 import teamData from './data/teamData.json';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from 'primereact/button';
 
 import "./assets/style/auctionPage.scss"; 
@@ -23,9 +23,19 @@ import "primereact/resources/themes/lara-light-cyan/theme.css";
 
 function App() {
   const [searchId, setSearchId] = useState("");
-  const filteredPlayer = playerData.find((player) => player.id === parseInt(searchId));
-  const [players, setPlayers] = useState(playerData);
-  const [teams, setTeams] = useState(teamData); // Team state
+  
+  // Initialize state with localStorage data or default data
+  const [players, setPlayers] = useState(() => {
+    const savedPlayers = localStorage.getItem('auctionPlayers');
+    return savedPlayers ? JSON.parse(savedPlayers) : playerData;
+  });
+  
+  const [teams, setTeams] = useState(() => {
+    const savedTeams = localStorage.getItem('auctionTeams');
+    return savedTeams ? JSON.parse(savedTeams) : teamData;
+  });
+  
+  const filteredPlayer = players.find((player) => player.id === parseInt(searchId));
   const playerFound = !!filteredPlayer;
   
   // Interactive button states
@@ -33,10 +43,20 @@ function App() {
   const [currentBid, setCurrentBid] = useState(null);
   const [rtmUsed, setRtmUsed] = useState(false);
 
+  // Save players data to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('auctionPlayers', JSON.stringify(players));
+  }, [players]);
+
+  // Save teams data to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('auctionTeams', JSON.stringify(teams));
+  }, [teams]);
+
 
   const randomizePlayerId = () => {
     // Filter out marquee players (Marquee 1, Marquee 2, Marquee Legend)
-    const regularPlayers = playerData.filter(player => 
+    const regularPlayers = players.filter(player => 
       !player.playerType.includes("Marquee")
     );
     
@@ -78,6 +98,18 @@ function App() {
     setRtmUsed(false);
   };
 
+  // Reset auction data to initial state
+  const resetAuctionData = () => {
+    if (window.confirm("Are you sure you want to reset all auction data? This will clear all player sales and team data.")) {
+      localStorage.removeItem('auctionPlayers');
+      localStorage.removeItem('auctionTeams');
+      setPlayers(playerData);
+      setTeams(teamData);
+      setSearchId("");
+      resetInteractiveStates();
+    }
+  };
+
   return (
       <div className="App">
           {/* Professional Header */}
@@ -85,12 +117,21 @@ function App() {
               <div className={`back-button ${filteredPlayer ? 'visible' : 'hidden'}`} onClick={() => setSearchId('')}>
                   <div className="back-arrow">←</div>
               </div>
+              <div className="league-logo">                 
+              </div>
               <div className="auction-title">
                   <h1>Village Cricket League</h1>
                   <div className="season-info">Season 10</div>
               </div>
-              <div className="league-logo">
-              </div>
+              
+              <Button 
+                      label="Reset Auction" 
+                      className="reset-button" 
+                      icon="pi pi-refresh" 
+                      onClick={resetAuctionData}
+                      severity="secondary"
+                      size="small"
+                  />
           </div>
 
           {/* Main Auction Container */}
