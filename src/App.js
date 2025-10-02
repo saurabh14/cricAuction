@@ -35,8 +35,20 @@ function App() {
 
 
   const randomizePlayerId = () => {
-    const randomId = Math.floor(Math.random() * 80); 
-    setSearchId(randomId);
+    // Filter out marquee players (Marquee 1, Marquee 2, Marquee Legend)
+    const regularPlayers = playerData.filter(player => 
+      !player.playerType.includes("Marquee")
+    );
+    
+    if (regularPlayers.length === 0) {
+      return; // No regular players available
+    }
+    
+    // Get random index from regular players
+    const randomIndex = Math.floor(Math.random() * regularPlayers.length);
+    const selectedPlayer = regularPlayers[randomIndex];
+    
+    setSearchId(selectedPlayer.id);
     resetInteractiveStates();
   };
 
