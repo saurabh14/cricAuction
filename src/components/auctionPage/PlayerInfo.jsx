@@ -1,11 +1,6 @@
 
 function PlayerInfo({ player }){
     // Calculate strike rate (runs per 100 balls)
-    const strikeRate = player.matches > 0 ? ((player.runs / (player.matches * 30)) * 100).toFixed(2) : 0;
-    
-    // Calculate 4s and 6s (estimated)
-    const fours = Math.floor(player.runs * 0.15);
-    const sixes = Math.floor(player.runs * 0.05);
     
     return(
         <>
@@ -40,19 +35,23 @@ function PlayerInfo({ player }){
                 </div>
                 <div className="stat-item">
                     <div className="stat-label">Strike Rate</div>
-                    <div className="stat-value">{strikeRate}</div>
+                    <div className="stat-value">{player.strikeRate}</div>
                 </div>
                 <div className="stat-item">
                     <div className="stat-label">6s</div>
-                    <div className="stat-value">{sixes}</div>
+                    <div className="stat-value">{player.sixes}</div>
                 </div>
                 <div className="stat-item">
                     <div className="stat-label">4s</div>
-                    <div className="stat-value">{fours}</div>
+                    <div className="stat-value">{player.fours}</div>
                 </div>
                 <div className="stat-item">
                     <div className="stat-label">Wickets</div>
                     <div className="stat-value">{player.wickets}</div>
+                </div>
+                <div className="stat-item">
+                    <div className="stat-label">Bowling Economy</div>
+                    <div className="stat-value">{player.economy}</div>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ function PlayerCard({ player, teams, onTeamSelect, onRTMSelect, onPriceSelect, c
         }
         
         // Add 2250 and 2500
-        prices.push(2250, 2500);
+        prices.push(2250);
         
         return prices;
     };
@@ -62,14 +62,23 @@ function PlayerCard({ player, teams, onTeamSelect, onRTMSelect, onPriceSelect, c
                 <div className="price-selection-section">
                     <div className="section-title">Bid Price</div>
                     <div className="price-buttons">
-                        {priceOptions.map(price => (
-                            <Button
-                                key={price}
-                                label={`Rs. ${price}`}
-                                className={`price-button ${currentBid === price ? 'selected' : ''}`}
-                                onClick={() => onPriceSelect && onPriceSelect(price)}
-                            />
-                        ))}
+                        {priceOptions.map(price => {
+                            let specialClass = '';
+                            if (price === 2000) {
+                                specialClass = 'silver';
+                            } else if (price === 2250) {
+                                specialClass = 'golden';
+                            }
+                            
+                            return (
+                                <Button
+                                    key={price}
+                                    label={`Rs. ${price}`}
+                                    className={`price-button ${specialClass} ${currentBid === price ? 'selected' : ''}`}
+                                    onClick={() => onPriceSelect && onPriceSelect(price)}
+                                />
+                            );
+                        })}
                     </div>
                 </div>
             </div>

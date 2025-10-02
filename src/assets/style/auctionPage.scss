@@ -422,6 +422,46 @@ body {
                     border-color: #ffffff;
                     box-shadow: 0 0 15px rgba(0, 212, 170, 0.5);
                 }
+                
+                // Silver button for Rs. 2000
+                &.silver {
+                    background: linear-gradient(135deg, #c0c0c0, #a8a8a8);
+                    border-color: #e0e0e0;
+                    color: #333333;
+                    font-weight: 700;
+                    
+                    &:hover {
+                        background: linear-gradient(135deg, #d0d0d0, #b8b8b8);
+                        border-color: #f0f0f0;
+                        box-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
+                    }
+                    
+                    &.selected {
+                        background: linear-gradient(135deg, #e0e0e0, #c0c0c0);
+                        border-color: #ffffff;
+                        box-shadow: 0 0 20px rgba(192, 192, 192, 0.8);
+                    }
+                }
+                
+                // Golden button for Rs. 2250
+                &.golden {
+                    background: linear-gradient(135deg, #ffd700, #ffb347);
+                    border-color: #ffed4e;
+                    color: #8b4513;
+                    font-weight: 700;
+                    
+                    &:hover {
+                        background: linear-gradient(135deg, #ffed4e, #ffd700);
+                        border-color: #ffff00;
+                        box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+                    }
+                    
+                    &.selected {
+                        background: linear-gradient(135deg, #ffff00, #ffd700);
+                        border-color: #ffffff;
+                        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+                    }
+                }
             }
         }
     }
@@ -697,10 +737,44 @@ body {
             }
             
             &.star1 span:nth-of-type(1)::before { color: #ffd700; }
+            &.star1-5 span:nth-of-type(1)::before { color: #ffd700; }
             &.star2 span:nth-of-type(-n+2)::before { color: #ffd700; }
+            &.star2-5 span:nth-of-type(-n+2)::before { color: #ffd700; }
             &.star3 span:nth-of-type(-n+3)::before { color: #ffd700; }
+            &.star3-5 span:nth-of-type(-n+3)::before { color: #ffd700; }
             &.star4 span:nth-of-type(-n+4)::before { color: #ffd700; }
+            &.star4-5 span:nth-of-type(-n+4)::before { color: #ffd700; }
             &.star5 span:nth-of-type(-n+5)::before { color: #ffd700; }
+            
+            // Half star styling
+            &.star1-5 span:nth-of-type(2)::before { 
+                color: #ffd700; 
+                background: linear-gradient(90deg, #ffd700 50%, #ffffff 50%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            &.star2-5 span:nth-of-type(3)::before { 
+                color: #ffd700; 
+                background: linear-gradient(90deg, #ffd700 50%, #ffffff 50%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            &.star3-5 span:nth-of-type(4)::before { 
+                color: #ffd700; 
+                background: linear-gradient(90deg, #ffd700 50%, #ffffff 50%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            &.star4-5 span:nth-of-type(5)::before { 
+                color: #ffd700; 
+                background: linear-gradient(90deg, #ffd700 50%, #ffffff 50%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
         }
     }
 }

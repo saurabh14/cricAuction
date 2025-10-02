@@ -8,15 +8,24 @@ function FullPlayers({players, onMarqueePlayerSelect}){
     const [marqueeVisible, setMarqueeVisible] = useState(false);
     const [selectedMarqueeSet, setSelectedMarqueeSet] = useState(null);
     
+    // Helper function to generate star class name
+    const getStarClassName = (stars) => {
+        if (stars % 1 === 0) {
+            return `star${Math.floor(stars)}`;
+        } else {
+            return `star${Math.floor(stars)}-5`;
+        }
+    };
+    
     // Filter out Marquee players from regular list
-    const regularPlayers = players.filter(player => player.playerType !== "Marquee" && player.finalPrice === 0);
-    const marqueePlayers = players.filter(player => player.playerType === "Marquee");
+    const regularPlayers = players.filter(player => !player.playerType.includes("Marquee") && player.finalPrice === 0);
+    const marqueePlayers = players.filter(player => player.playerType.includes("Marquee"));
     
     // Group marquee players by set
     const marqueeSets = {
-        1: marqueePlayers.filter(player => player.marqueeSet === 1),
-        2: marqueePlayers.filter(player => player.marqueeSet === 2),
-        3: marqueePlayers.filter(player => player.marqueeSet === 3)
+        1: marqueePlayers.filter(player => player.playerType === "Marquee 1"),
+        2: marqueePlayers.filter(player => player.playerType === "Marquee 2"),
+        3: marqueePlayers.filter(player => player.playerType === "Marquee Legend")
     };
     
     const handleMarqueeClick = (setNumber) => {
@@ -37,7 +46,7 @@ function FullPlayers({players, onMarqueePlayerSelect}){
                 <div key={player.id} className="PlayerListCard">
                     <div className="playerName">{player.name}</div>
                     <div className="playerAttributes">{player.playerAttributes}</div>
-                    <div className={`RatingContainer star${player.stars}`} >
+                    <div className={`RatingContainer ${getStarClassName(player.stars)}`} >
                         <span></span><span></span><span></span><span></span><span></span>
                     </div>
                 </div>
@@ -47,15 +56,15 @@ function FullPlayers({players, onMarqueePlayerSelect}){
         {/* Marquee Sets Buttons */}
         <div className="Marquee-Container">
             <div className="Marquee-List set1" onClick={() => handleMarqueeClick(1)}>
-                <div className="marquee-set-title">Marquee Set 1</div>
+                <div className="marquee-set-title">Marquee - 1</div>
                 <div className="marquee-set-count">{marqueeSets[1].length} Players</div>
             </div>
             <div className="Marquee-List set2" onClick={() => handleMarqueeClick(2)}>
-                <div className="marquee-set-title">Marquee Set 2</div>
+                <div className="marquee-set-title">Marquee - 2</div>
                 <div className="marquee-set-count">{marqueeSets[2].length} Players</div>
             </div>   
             <div className="Marquee-List set3" onClick={() => handleMarqueeClick(3)}>
-                <div className="marquee-set-title">Marquee Set 3</div>
+                <div className="marquee-set-title">Marquee - Legends</div>
                 <div className="marquee-set-count">{marqueeSets[3].length} Players</div>
             </div>   
         </div>
@@ -112,23 +121,23 @@ function FullPlayers({players, onMarqueePlayerSelect}){
                                 </div>
                                 <div className="stat-row">
                                     <span className="stat-label">Strike Rate:</span>
-                                    <span className="stat-value">{player.matches > 0 ? ((player.runs / (player.matches * 30)) * 100).toFixed(2) : 0}</span>
+                                    <span className="stat-value">{player.strikeRate}</span>
                                 </div>
                                 <div className="stat-row">
                                     <span className="stat-label">6s:</span>
-                                    <span className="stat-value">{Math.floor(player.runs * 0.05)}</span>
+                                    <span className="stat-value">{player.sixes}</span>
                                 </div>
                                 <div className="stat-row">
                                     <span className="stat-label">4s:</span>
-                                    <span className="stat-value">{Math.floor(player.runs * 0.15)}</span>
+                                    <span className="stat-value">{player.fours}</span>
                                 </div>
                                 <div className="stat-row">
                                     <span className="stat-label">Wickets:</span>
                                     <span className="stat-value">{player.wickets}</span>
                                 </div>
                                 <div className="stat-row">
-                                    <span className="stat-label">Econ.:</span>
-                                    <span className="stat-value">{player.matches > 0 ? (player.wickets / player.matches).toFixed(2) : 0}</span>
+                                    <span className="stat-label">Economy:</span>
+                                    <span className="stat-value">{player.economy}</span>
                                 </div>
                             </div>
                         </div>
