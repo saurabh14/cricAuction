@@ -107,7 +107,9 @@ function App() {
                       <div className="playerCard-container">
                           <FullPlayers 
                               players={players} 
-                              setPlayers={setPlayers} 
+                              teams={teams}
+                              setPlayers={setPlayers}
+                              setTeams={setTeams}
                               onMarqueePlayerSelect={handleMarqueePlayerSelect}
                           />
                       </div>

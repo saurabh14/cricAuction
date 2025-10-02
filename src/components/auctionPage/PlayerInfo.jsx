@@ -25,33 +25,46 @@ function PlayerInfo({ player }){
         <div className="PlayerCard-img"></div>
         <div className="PlayerCard-info-wrapper">
             <div className="PlayerCard-info">
-                <div className="stat-item">
-                    <div className="stat-label">Matches</div>
-                    <div className="stat-value">{player.matches}</div>
+                {/* Matches in its own row */}
+                <div className="stat-row-single">
+                    <div className="stat-item">
+                        <div className="stat-label">Matches</div>
+                        <div className="stat-value">{player.matches}</div>
+                    </div>
                 </div>
-                <div className="stat-item">
-                    <div className="stat-label">Runs</div>
-                    <div className="stat-value">{player.runs}</div>
+                
+                {/* Remaining stats in pairs */}
+                <div className="stat-row-pair">
+                    <div className="stat-item">
+                        <div className="stat-label">Runs</div>
+                        <div className="stat-value">{player.runs}</div>
+                    </div>
+                    <div className="stat-item">
+                        <div className="stat-label">Strike Rate</div>
+                        <div className="stat-value">{player.strikeRate}</div>
+                    </div>
                 </div>
-                <div className="stat-item">
-                    <div className="stat-label">Strike Rate</div>
-                    <div className="stat-value">{player.strikeRate}</div>
+                
+                <div className="stat-row-pair">
+                    <div className="stat-item">
+                        <div className="stat-label">6s</div>
+                        <div className="stat-value">{player.sixes}</div>
+                    </div>
+                    <div className="stat-item">
+                        <div className="stat-label">4s</div>
+                        <div className="stat-value">{player.fours}</div>
+                    </div>
                 </div>
-                <div className="stat-item">
-                    <div className="stat-label">6s</div>
-                    <div className="stat-value">{player.sixes}</div>
-                </div>
-                <div className="stat-item">
-                    <div className="stat-label">4s</div>
-                    <div className="stat-value">{player.fours}</div>
-                </div>
-                <div className="stat-item">
-                    <div className="stat-label">Wickets</div>
-                    <div className="stat-value">{player.wickets}</div>
-                </div>
-                <div className="stat-item">
-                    <div className="stat-label">Bowling Economy</div>
-                    <div className="stat-value">{player.economy}</div>
+                
+                <div className="stat-row-pair">
+                    <div className="stat-item">
+                        <div className="stat-label">Wickets</div>
+                        <div className="stat-value">{player.wickets}</div>
+                    </div>
+                    <div className="stat-item">
+                        <div className="stat-label">Bowling Economy</div>
+                        <div className="stat-value">{player.economy}</div>
+                    </div>
                 </div>
             </div>
         </div>
